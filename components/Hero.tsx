@@ -2,7 +2,8 @@
 
 import { motion, useScroll, useSpring, useTransform } from "motion/react";
 import { useRef } from "react";
-import { Floral, Icon } from "./Art";
+import { Floral } from "./Art";
+import Gate from "./Gate";
 import { scrollToY } from "./SmoothScroll";
 
 // deterministic garland lengths (no Math.random -> no hydration mismatch)
@@ -34,14 +35,8 @@ export default function Hero() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
   const p = useSpring(scrollYProgress, { stiffness: 110, damping: 28, mass: 0.4 });
 
-  // hinged doors swing open
-  const leftRot = useTransform(p, [0, 0.5], [0, -88]);
-  const rightRot = useTransform(p, [0, 0.5], [0, 88]);
-  const doorOpacity = useTransform(p, [0.4, 0.55], [1, 0]);
-  const hintOpacity = useTransform(p, [0, 0.1], [1, 0]);
-  const hintY = useTransform(p, [0, 0.1], [0, -30]);
 
-  // the arch comes forward
+  // the arch comes forward behind the gate
   const archScale = useTransform(p, [0.05, 0.55], [0.78, 1]);
   const archOpacity = useTransform(p, [0.05, 0.4], [0.2, 1]);
   const archY = useTransform(p, [0.55, 1], [0, -40]);
@@ -100,25 +95,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Doors */}
-        <motion.div className="door left" style={{ rotateY: leftRot, opacity: doorOpacity }} aria-hidden="true">
-          <div className="panel" /><div className="knocker" /><div className="edge" />
-          <div className="medallion"><span className="foil">A&amp;I</span></div>
-        </motion.div>
-        <motion.div className="door right" style={{ rotateY: rightRot, opacity: doorOpacity }} aria-hidden="true">
-          <div className="panel" /><div className="knocker" /><div className="edge" />
-          <div className="medallion"><span className="foil">A&amp;I</span></div>
-        </motion.div>
-
-        <motion.div className="door-top" style={{ opacity: hintOpacity, y: hintY }}>
-          <p className="bism">بِسْمِ اللّٰهِ</p>
-          <p>Wedding Invitation</p>
-        </motion.div>
-        <motion.button className="door-hint" style={{ opacity: hintOpacity, y: hintY }} onClick={open} aria-label="Open the invitation">
-          <span className="names-top foil">Anas &amp; Iram</span>
-          Scroll to open
-          {Icon.down}
-        </motion.button>
+        <Gate p={p} onOpen={open} />
       </div>
     </section>
   );

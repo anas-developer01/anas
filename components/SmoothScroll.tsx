@@ -4,7 +4,7 @@ import Lenis from "lenis";
 import { useEffect } from "react";
 
 declare global {
-  interface Window { __lenis?: Lenis }
+  interface Window { __lenis?: Lenis; __inviteReady?: boolean }
 }
 
 export function scrollToY(y: number, duration = 2) {

@@ -18,6 +18,8 @@ export default function Preloader() {
       onExitComplete={() => {
         document.body.classList.remove("loading");
         window.__lenis?.start();
+        window.__inviteReady = true;
+        window.dispatchEvent(new Event("invite:ready"));
       }}
     >
       {show && (
@@ -29,27 +31,27 @@ export default function Preloader() {
         >
           <svg viewBox="0 0 150 150" aria-hidden="true">
             <motion.circle
-              cx="75" cy="75" r="68" fill="none" stroke="#b8933f" strokeWidth="1.5"
+              cx="75" cy="75" r="68" fill="#fbf8f1" fillOpacity=".06" stroke="#d9b56a" strokeWidth="1.5"
               initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
               transition={{ duration: 1.6, ease: "easeInOut" }}
             />
             <motion.circle
-              cx="75" cy="75" r="60" fill="none" stroke="#dcc48f" strokeWidth=".6" strokeDasharray="2 5"
+              cx="75" cy="75" r="60" fill="none" stroke="#ecd7a4" strokeWidth=".6" strokeDasharray="2 5"
               initial={{ opacity: 0, rotate: -90 }} animate={{ opacity: 1, rotate: 0 }}
               transition={{ duration: 1.8, delay: .3 }}
               style={{ transformOrigin: "75px 75px" }}
             />
             <motion.text
-              x="75" y="88" textAnchor="middle" fontSize="40" fontWeight="600" fill="#f3e2b3"
+              x="75" y="88" textAnchor="middle" fontSize="40" fontWeight="600" fill="#fbf3de"
               style={{ fontFamily: "var(--serif)", letterSpacing: 2 }}
               initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: .7 }}
             >
-              A<tspan fill="#b8933f" fontStyle="italic">&amp;</tspan>I
+              A<tspan fill="#e3c27a" fontStyle="italic">&amp;</tspan>I
             </motion.text>
           </svg>
-          <motion.p initial={{ opacity: 0, letterSpacing: "14px" }} animate={{ opacity: 1, letterSpacing: "6px" }} transition={{ duration: 1.4, delay: .9 }}>
-            Bismillah
+          <motion.p className="bism" lang="ar" dir="rtl" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.2, delay: .9 }}>
+            بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ
           </motion.p>
         </motion.div>
       )}
