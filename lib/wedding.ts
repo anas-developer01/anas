@@ -32,6 +32,17 @@ export const families = {
   ],
 };
 
+/** Contacts for guest queries — numbers in local Pakistani format */
+export const contacts = [
+  { name: "Mr. Ghulam Rasool", role: "Father of the Groom", phone: "03059654192" },
+  { name: "Malik Fahad Rasool", role: "Brother of the Groom", phone: "03095481288" },
+];
+
+/** 03059654192 -> 923059654192 (for tel: and WhatsApp links) */
+export const intlPhone = (local: string) => `92${local.replace(/\D/g, "").replace(/^0/, "")}`;
+/** 03059654192 -> 0305 9654192 */
+export const prettyPhone = (local: string) => local.replace(/^(\d{4})(\d+)$/, "$1 $2");
+
 export type WeddingEvent = {
   key: "mehndi" | "barat" | "walima";
   title: string;

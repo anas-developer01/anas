@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { useRef, useState } from "react";
 import { Floral, Icon } from "./Art";
 import Reveal from "./Reveal";
-import { families } from "@/lib/wedding";
+import { contacts, families, intlPhone, prettyPhone } from "@/lib/wedding";
 
 export function Dua() {
   const ref = useRef<HTMLElement>(null);
@@ -35,6 +35,22 @@ export function Dua() {
             <li className="brother">{families.brother} <span>(Brother)</span></li>
             {families.cousins.map((name) => <li key={name}>{name}</li>)}
           </ul>
+        </Reveal>
+        <Reveal className="host contact" delay={0.2}>
+          <p>For Queries</p>
+          <div className="contact-list">
+            {contacts.map((c) => (
+              <div key={c.phone} className="contact-card">
+                <h5>{c.name}</h5>
+                <span className="contact-role">{c.role}</span>
+                <a className="contact-num" href={`tel:+${intlPhone(c.phone)}`}>{prettyPhone(c.phone)}</a>
+                <div className="contact-actions">
+                  <a className="btn solid" href={`tel:+${intlPhone(c.phone)}`}>{Icon.phone}Call</a>
+                  <a className="btn" href={`https://wa.me/${intlPhone(c.phone)}`} target="_blank" rel="noopener noreferrer">{Icon.whatsapp}WhatsApp</a>
+                </div>
+              </div>
+            ))}
+          </div>
         </Reveal>
       </div>
     </section>
