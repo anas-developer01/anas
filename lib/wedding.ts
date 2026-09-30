@@ -5,6 +5,33 @@ export const couple = {
   monogram: ["A", "I"] as const,
 };
 
+export const families = {
+  groom: { father: "Mr. Ghulam Rasool", mother: "Mrs. Shazia Erum", relation: "Son of" },
+  bride: { father: "Mr. Muhammad Nasir", mother: "Mrs. Nasir", relation: "Daughter of" },
+  lookingForward: [
+    "Malik Ghulam Nabi",
+    "Malik Aslam",
+    "Malik Shahid Iqbal",
+    "Malik Ajmal Shahzad",
+    "Malik Shahbaz",
+    "Malik Ali Raza",
+    "Malik Mudassir",
+  ],
+  brother: "Malik Fahad Rasool",
+  cousins: [
+    "Malik Uzair",
+    "Malik Hassan",
+    "Malik Shahzaib",
+    "Malik Bilal Shahid",
+    "Malik Ali",
+    "Malik Abdul Rehman",
+    "Malik Abdul Hadi",
+    "Malik Musa",
+    "Malik Azhan",
+    "Malik Noraiz",
+  ],
+};
+
 export type WeddingEvent = {
   key: "mehndi" | "barat" | "walima";
   title: string;

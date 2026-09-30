@@ -4,6 +4,7 @@ import { motion, MotionValue, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import { Floral } from "./Art";
 import Reveal from "./Reveal";
+import { couple, families } from "@/lib/wedding";
 
 const text: [string, boolean?][] = [
   ["Together"], ["with"], ["our"], ["families,"], ["we"], ["joyfully"], ["invite"], ["you"], ["to"], ["celebrate"], ["the"], ["union"], ["of"],
@@ -42,6 +43,22 @@ export default function Invite() {
             <Word key={i} w={w} em={em} i={i} total={text.length} progress={scrollYProgress} />
           ))}
         </p>
+
+        <div className="families">
+          <Reveal className="family">
+            <p className="role">The Groom</p>
+            <h3>{couple.groom}</h3>
+            <p className="rel">{families.groom.relation}</p>
+            <p className="parents">{families.groom.father}<br />&amp; {families.groom.mother}</p>
+          </Reveal>
+          <Reveal className="family-amp" delay={0.15}>&amp;</Reveal>
+          <Reveal className="family" delay={0.25}>
+            <p className="role">The Bride</p>
+            <h3>{couple.bride}</h3>
+            <p className="rel">{families.bride.relation}</p>
+            <p className="parents">{families.bride.father}<br />&amp; {families.bride.mother}</p>
+          </Reveal>
+        </div>
       </div>
     </section>
   );

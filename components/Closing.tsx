@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { useRef, useState } from "react";
 import { Floral, Icon } from "./Art";
 import Reveal from "./Reveal";
+import { families } from "@/lib/wedding";
 
 export function Dua() {
   const ref = useRef<HTMLElement>(null);
@@ -20,7 +21,20 @@ export function Dua() {
         <Reveal as="p" className="en" delay={0.2}>“May Allah bless you both, shower His blessings upon you, and unite you in goodness.”</Reveal>
         <Reveal className="host" delay={0.3}>
           <p>With best compliments from</p>
-          <h4>The Rasool &amp; Nasir Families</h4>
+          <h4>{families.groom.father} &amp; {families.groom.mother}</h4>
+          <span className="host-and">and</span>
+          <h4>{families.bride.father} &amp; {families.bride.mother}</h4>
+        </Reveal>
+        <Reveal className="host forward" delay={0.4}>
+          <p>Looking forward</p>
+          <ul className="forward-list">
+            {families.lookingForward.map((name) => <li key={name}>{name}</li>)}
+          </ul>
+          <p className="forward-sub">Brother &amp; Cousins</p>
+          <ul className="forward-list small">
+            <li className="brother">{families.brother} <span>(Brother)</span></li>
+            {families.cousins.map((name) => <li key={name}>{name}</li>)}
+          </ul>
         </Reveal>
       </div>
     </section>
