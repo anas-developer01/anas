@@ -22,8 +22,6 @@ export function Dua() {
         <Reveal className="host" delay={0.3}>
           <p>With best compliments from</p>
           <h4>{families.groom.father} &amp; {families.groom.mother}</h4>
-          <span className="host-and">and</span>
-          <h4>{families.bride.father} &amp; {families.bride.mother}</h4>
         </Reveal>
         <Reveal className="host forward" delay={0.4}>
           <p>Looking forward</p>

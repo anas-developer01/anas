@@ -303,9 +303,36 @@ body::after {
 
 /* ---------- journey ---------- */
 .journey { position: relative; padding: 100px 0 110px; text-align: center; background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%); overflow: hidden; }
-.route { max-width: 660px; margin: 34px auto 0; }
-.route svg { width: 100%; height: auto; overflow: visible; }
-.route .caption { font-family: var(--serif); font-size: 21px; color: var(--muted); font-style: italic; margin-top: 18px; }
+.scene { position: relative; max-width: 860px; margin: 38px auto 0; border-radius: 28px; overflow: hidden;
+  border: 1px solid rgba(200,169,106,.55); box-shadow: 0 40px 80px -40px rgba(110,47,60,.5), 0 0 0 8px rgba(255,255,255,.45); }
+.scene svg { width: 100%; height: auto; display: block; }
+.journey-caption { font-family: var(--serif); font-size: 21px; color: var(--muted); font-style: italic; margin-top: 22px; }
+.cloud { animation: drift 38s linear infinite alternate; }
+.cloud.c2 { animation-duration: 46s; animation-direction: alternate-reverse; }
+@keyframes drift { from { transform: translateX(-30px); } to { transform: translateX(40px); } }
+.birds { animation: drift 20s ease-in-out infinite alternate; }
+.car-body { animation: carBob .5s ease-in-out infinite alternate; }
+@keyframes carBob { from { transform: translateY(0); } to { transform: translateY(-.8px); } }
+.ribbon { transform-box: fill-box; transform-origin: 0% 50%; animation: flutter .6s ease-in-out infinite alternate; }
+.ribbon.r2 { animation-delay: -.3s; }
+@keyframes flutter { from { transform: scaleY(1) rotate(0deg); } to { transform: scaleY(-1.2) rotate(-4deg); } }
+.beam { opacity: .7; animation: beamPulse 2.2s ease-in-out infinite; }
+@keyframes beamPulse { 50% { opacity: .35; } }
+.star { animation: twinkle 3s ease-in-out infinite; }
+.scene .bulb { animation: twinkle 1.8s ease-in-out infinite; filter: drop-shadow(0 0 1.5px #ffd98a); }
+.frost { animation: twinkle 2.6s ease-in-out infinite; }
+@keyframes twinkle { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
+.fog { animation: fogDrift 26s ease-in-out infinite alternate; }
+.fog.f2 { animation-duration: 34s; animation-direction: alternate-reverse; }
+@keyframes fogDrift { from { transform: translateX(-60px); } to { transform: translateX(60px); } }
+.lamp-glow { animation: lampPulse 3s ease-in-out infinite; }
+@keyframes lampPulse { 50% { opacity: .7; } }
+.fireworks { opacity: 0; transition: opacity .6s; }
+.scene.arrived .fireworks { opacity: 1; }
+.fw { transform-box: fill-box; transform-origin: center; transform: scale(0); }
+.scene.arrived .fw { animation: burst 1.6s ease-out infinite; }
+@keyframes burst { 0% { transform: scale(.2); opacity: 1; } 70% { opacity: 1; } 100% { transform: scale(1.6); opacity: 0; } }
+@media (max-width: 560px) { .scene { border-radius: 20px; margin-left: -4px; margin-right: -4px; } }
 
 /* ---------- dua ---------- */
 .dua { position: relative; padding: 120px 0; text-align: center; background: var(--paper); overflow: hidden; }
@@ -360,6 +387,6 @@ body::after {
 @keyframes fall { to { transform: translate(var(--dx), 110vh) rotate(var(--rot)); } }
 
 @media (prefers-reduced-motion: reduce) {
-  .strand, .lantern svg, .seal::after, .hero-glow, .foil, .foil-green { animation: none; }
+  .strand, .lantern svg, .seal::after, .cloud, .star, .scene .bulb, .frost, .fog, .lamp-glow, .car-body, .ribbon, .beam, .scene.arrived .fw, .hero-glow, .foil, .foil-green { animation: none; }
   .petals { display: none; }
 }
