@@ -438,7 +438,7 @@ export default function Journey() {
   return (
     <section className="journey">
       <div className="wrap">
-        <Reveal as="p" className="eyebrow">14 November · 5:00 PM</Reveal>
+        <Reveal as="p" className="eyebrow">14 November · 3:00 PM</Reveal>
         <Reveal as="h2" className="title" delay={0.1}>The Barat <em className="foil">Journey</em></Reveal>
 
         <div className={`scene${arrived ? " arrived" : ""}`} ref={box}>

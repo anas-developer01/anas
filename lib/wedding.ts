@@ -72,28 +72,28 @@ export const events: WeddingEvent[] = [
     key: "barat",
     title: "Barat",
     day: "Saturday, 14 November 2026",
-    time: "5:00 PM",
+    time: "3:00 PM",
     venue: "Departure from Hasilpur to Multan",
     map: "https://share.google/XtmLhBHP72voijPo0",
     accent: "#8e2436",
-    start: "20261114T120000Z",
-    end: "20261114T170000Z",
+    start: "20261114T100000Z",
+    end: "20261114T150000Z",
   },
   {
     key: "walima",
     title: "Walima",
     day: "Sunday, 15 November 2026",
-    time: "12:00 PM",
+    time: "2:00 PM",
     venue: "Al Madina Grand Marquee, Hasilpur",
     map: "https://share.google/h7aaqnPoEZzM0liaJ",
     accent: "#1f7a57",
-    start: "20261115T070000Z",
-    end: "20261115T110000Z",
+    start: "20261115T090000Z",
+    end: "20261115T130000Z",
   },
 ];
 
-/** Barat — 14 Nov 2026, 5:00 PM Pakistan time */
-export const countdownTarget = "2026-11-14T17:00:00+05:00";
+/** Barat — 14 Nov 2026, 3:00 PM Pakistan time */
+export const countdownTarget = "2026-11-14T15:00:00+05:00";
 
 export function calendarUrl(e: WeddingEvent) {
   const q = new URLSearchParams({
